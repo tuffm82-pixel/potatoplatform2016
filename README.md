@@ -1,17 +1,22 @@
-# Potato Man — Spud Sprint
+# Potato Man — Spud Sprint 3D
 
-A full-screen, landscape, three-lane endless runner with the original Potato Man comic artwork. Inspired by the lane-switching, jumping and sliding controls of arcade runners. All scenery, track art and gameplay are original.
+A full-screen, three-lane arcade runner with original modeled 3D Potato Man characters, animated limbs, live lighting, shadows, and a colorful 3D world.
 
 ## Play
-Open index.html in your browser. No build or installation is needed.
+Open index.html in a browser. No installation or build is needed.
 
-Left / Right (A / D): switch lanes. Space / Up / W: jump. Down / S: slide. E: special power. Escape / P: pause. Touch devices support swiping and on-screen buttons. Sound starts muted. Fullscreen is available on the title screen.
+Left / Right or A / D change lanes. Space / Up / W jumps. Down / S slides. E activates your hero power. Escape / P pauses. Touch supports swipes and on-screen controls.
 
-Five runners: Potato Man (Fly Form), Super Spud (Lightning Rush), Greg (Sizzle Shield), Barry (Star Magnet), Chef (Clear the Track). Stick Man has been removed.
+## Unlock your crew
+Potato Man is free. Earn gold coins by collecting them on the track, then preview a locked character and choose Unlock when you have enough:
+- Super Spud: 200 coins
+- Greg: 350 coins
+- Barry: 500 coins
+- Chef: 750 coins
 
-Dodge crates, low gates and tall carts. Every obstacle row has an open lane. Runs gradually speed up and cycle through four areas. Each run starts with three hearts. Best distance and selected hero save locally in this browser.
+These are in-game coins earned through play. No payment or account is required. Coins save at pickup, so returning to the menu keeps them. Buying a hero deducts the price once, permanently unlocks them in this browser and equips them. Previously saved runner stars migrate into the wallet. Locked previews do not change the equipped hero.
+
+Progress is local to this browser and origin; clearing browser data removes it. The 3D edition needs WebGL. It uses locally bundled Three.js r160 under the MIT license; see THREE-LICENSE.txt. Original art remains in assets as reference, while the playable characters are mesh models built in renderer3d.js.
 
 ## Verify
-Run node --test runner.test.cjs.
-
-Gameplay artwork is preserved from the user's existing Potato Royale assets. The old reference gallery and unrelated drawings are not part of the runner interface.
+Run node --test *.test.cjs. Tests cover runner controls and collisions, purchases and migration, persistence, and all five volumetric character rigs.

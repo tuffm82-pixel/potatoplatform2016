@@ -1,0 +1,8 @@
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.SpudWallet=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){'use strict';
+const PRICES=[0,200,350,500,750],KEY='spud-sprint-wallet-v1';
+function clean(value){const v=value&&typeof value==='object'?value:{},owned=Array.isArray(v.owned)?[...new Set(v.owned.filter(i=>Number.isInteger(i)&&i>=0&&i<5))]:[0];if(!owned.includes(0))owned.unshift(0);return{version:1,coins:(Number.isFinite(Number(v.coins))?Math.max(0,Math.floor(Number(v.coins))):0),owned,selected:owned.includes(v.selected)?v.selected:0,best:(Number.isFinite(Number(v.best))?Math.max(0,Math.floor(Number(v.best))):0)};}
+function load(storage){try{const raw=storage.getItem(KEY);if(raw)return clean(JSON.parse(raw));return clean({coins:Number(storage.getItem('spud-runner-stars'))||0,best:Number(storage.getItem('spud-runner-best'))||0,owned:[0],selected:0});}catch{return clean({});}}
+function save(storage,w){try{storage.setItem(KEY,JSON.stringify(clean(w)));return true;}catch{return false;}}
+function buy(w,index){if(!Number.isInteger(index)||index<0||index>=5)return{ok:false,reason:'invalid'};if(w.owned.includes(index)){w.selected=index;return{ok:true,reason:'owned'};}if(w.coins<PRICES[index])return{ok:false,reason:'funds',missing:PRICES[index]-w.coins};w.coins-=PRICES[index];w.owned.push(index);w.selected=index;return{ok:true,reason:'unlocked'};}
+function earn(w,amount){if(!Number.isFinite(amount)||amount<=0)return;w.coins+=Math.floor(amount);}
+return{PRICES,KEY,clean,load,save,buy,earn};});
