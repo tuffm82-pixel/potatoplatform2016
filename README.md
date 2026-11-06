@@ -1,6 +1,10 @@
-# Potato Man — Spud Sprint 3D
+# potatoplatform2016
 
-A full-screen, three-lane arcade runner with original modeled 3D Potato Man characters, animated limbs, live lighting, shadows, and a colorful 3D world.
+## [CLICK ME TO PLAY OFFICIAL](https://potato-man-paper-quest.hassan766767676.chatgpt.site)
+
+Sign in with ChatGPT to play the hosted game.
+
+A portrait, three-lane arcade runner with original modeled 3D Potato Man characters, animated limbs, live lighting, shadows, and a colorful 3D world.
 
 ## Play
 Open index.html in a browser. No installation or build is needed.
